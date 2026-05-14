@@ -1,0 +1,16 @@
+.links a {
+  color: black;
+  text-transform: uppercase;
+  border-right: 1px solid black;
+  padding: 0 20px;
+}
+
+a {
+  color: #918c62 !important;
+  // color: rgb(255, 255, 255);
+  transition: all 0.1s ease-in-out;
+}
+
+#footer {
+  padding: 0;
+}

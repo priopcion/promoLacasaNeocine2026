@@ -1,0 +1,21 @@
+<div class="menuHeader PoppinsRegular">
+  <a routerLink="/miCuenta"
+    ><img
+      *ngIf="!imagenNula"
+      [src]="rutaImgUsuario"
+      alt="imgPerfil"
+      width="80%" />
+    <img
+      *ngIf="imagenNula"
+      src="https://api.proyectosrotulaciones.com/archivos/imgPerfil/nestle.png"
+      width="80%"
+  /></a>
+  <p class="BebasNeueRegular">{{ nombreUsuario }} {{ apellidosUsuario }}</p>
+  <p>({{ datosUsuario.permisos }})</p>
+</div>
+
+<div class="shadow-bottom" [ngClass]="{ 'd-block': estaScrolleado }"></div>
+
+<div class="main-menu-content" [perfectScrollbar] (scroll)="scrolleaSideBar()">
+  <ul class="navigation navigation-main" layout="vertical" core-menu></ul>
+</div>

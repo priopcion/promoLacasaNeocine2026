@@ -1,0 +1,100 @@
+{
+  "LOGIN": {
+    "LABELS": {
+      "lb_titulo": "Admin Somesmorzadors! 🍺",
+      "lb_iniciaSesion": "Per favor, inicia sessió amb el teu compte per a continuar",
+      "lb_email": "Email",
+      "lb_emailObligatorio": "És obligatori introduir un Email",
+      "lb_emailInvalido": "Has d'introduir una direcció d'Email vàlida.",
+      "lb_password": "Contrasenya",
+      "lb_passwordObligatorio": "És obligatori introduir una contrasenya",
+      "lb_passwordInvalido": "Has d'introduir una contrasenya vàlida",
+      "lb_passwordOlvidado": "He oblidat la meua contrasenya"
+    },
+    "CHECKBOXES": {
+      "ch_recordar": "Recorda'm"
+    },
+    "BUTTONS": {
+      "bt_iniciarSesion": "Iniciar Sessió"
+    },
+    "PLACEHOLDERS": {
+      "ph_introduceEmail": "Introduïx el teu Email",
+      "ph_introducePassword": "Introduïx la teua contrasenya"
+    },
+    "SWALS": {
+      "sw_usuarioNoValido": "L'usuari introduït no és vàlid, revisa els camps introduïts.",
+      "sw_datosIncorrectos": "Les dades d'accés introduïts són incorrectes, revisa els camps introduïts."
+    },
+    "ACCIONES": {
+      "ac_loginUsuarioInvalido": "Login: Usuari Incorrecte / Invàlid"
+    }
+  },
+  "RECORDAR_PASSWORD": {
+    "LABELS": {
+      "lb_titulo": "Has Oblidat La teua Contrasenya? 🔒",
+      "lb_introduceEmail": "Introduïx el teu usuari d'accés i, si és correcte, et recordarem la teua contrasenya",
+      "lb_usuario": "Usuari d'Accés",
+      "lb_usuarioObligatorio": "És obligatori introduir el teu usuari d'accés",
+      "lb_usuarioInvalido": "És obligatori introduir un usuari d'accés vàlid"
+    },
+    "BUTTONS": {
+      "bt_recordarContrasenya": "Recordar Contrasenya",
+      "bt_volverLogin": "Tornar al Login"
+    },
+    "PLACEHOLDERS": {
+      "ph_introduceUsuario": "Introduïx el teu Usuari"
+    },
+    "SWALS": {
+      "sw_usuarioNoValido": "L'usuari introduït no és correcte, revisa els camps introduïts.",
+      "sw_contrasenyaEnviadaTitulo": "Contrasenya Enviada",
+      "sw_contrasenyaEnviada": "Acabem d'enviar al correu associat a este usuari d'accés la contrasenya.<br><br> Revisa la teua safata d'entrada / SPAM per a poder visualitzar-la i accedir a la plataforma.<br><br> Moltes gràcies."
+    },
+    "ACCIONES": {
+      "ac_recordarContrasenyaEmailEnviado": "Recordar Contrasenya: Email Enviat",
+      "ac_recordarContrasenyaUsuarioInvalido": "Recordar Contrasenya: Usuari Incorrecte"
+    }
+  },
+  "PAG_NO_ENCONTRADA": {
+    "LABELS": {
+      "lb_titulo": "Pàgina No Trobada 🕵🏻‍♀️",
+      "lb_urlIncorrecta": "Ooops! 😖 No hem trobat la URL sol·licitada. Revisa-la per favor."
+    },
+    "BUTTONS": {
+      "bt_volverDashboard": "Tornar al Dashboard"
+    }
+  },
+  "MENUS": {
+    "RESUMEN": "Resum",
+    "DASHBOARD": "Dashboard",
+    "REMESAS": "Remeses"
+  },
+  "ANALISIS": {
+    "ESTADISTICAS": {
+      "GENERALES": {
+        "lb_bares": "Total Bars Participants",
+        "lb_participaciones": "Total Participacions",
+        "lb_participantesUnicos": "Total Participants Únics",
+        "lb_premiosCanjeados": "Total Premis Canjeats"
+      },
+      "PARTICIPACIONES_EDAD": {
+        "LABELS": {
+          "lb_participacionesPorEdad": "Participacions Per Edat",
+          "lb_seleccionarTop": "Seleccionar TOP",
+          "lb_top5": "Top 5 Edats",
+          "lb_top10": "Top 10 Edats",
+          "lb_top15": "Top 15 Edats",
+          "lb_top20": "Top 20 Edats"
+        },
+        "TOASTR": {
+          "to_hasElegido": "🏆 Has triat seleccionar les {{arg_numRows}} edats més freqüentades'",
+          "to_cambioRealizado": "Cambi Realitzat!"
+        }
+      },
+      "PARTICIPACIONES_NAVEGADOR": {
+        "LABELS": {
+          "lb_participacionesPorNavegador": "Participacions Per Navegador"
+        }
+      }
+    }
+  }
+}

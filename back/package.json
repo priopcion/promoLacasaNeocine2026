@@ -1,0 +1,43 @@
+{
+  "name": "farmaciasapiexpress",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "clean-css": "^5.2.4",
+    "connect-multiparty": "^2.2.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "^4.18.2",
+    "follow-redirects": "^1.14.8",
+    "http-errors": "~1.6.3",
+    "ipware": "^2.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mailjet-sendemail": "^1.1.4",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.4",
+    "mv": "^2.1.1",
+    "node-fetch": "^3.2.0",
+    "node-mailjet": "^3.3.7",
+    "nodemailer": "^6.7.0",
+    "pac-resolver": "^5.0.0",
+    "pug": "^3.0.2",
+    "pug-code-gen": "^2.0.3",
+    "sequelize": "^6.29.3",
+    "sharp": "^0.30.5",
+    "tedious": "^14.3.0",
+    "validator": "^13.7.0",
+    "vm2": "^3.9.7",
+    "winston": "^3.6.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.0",
+    "nodemon": "^2.0.15",
+    "sequelize-cli": "^6.4.1",
+    "simple-get": "^4.0.1"
+  }
+}

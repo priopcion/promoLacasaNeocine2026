@@ -1,0 +1,121 @@
+{
+  "LOGIN": {
+    "LABELS": {
+      "lb_titulo": "PORTAL DE ACCESO 👋",
+      "lb_iniciaSesion": "Por favor, introduce tus datos de acceso",
+      "lb_email": "Email",
+      "lb_emailObligatorio": "Es obligatorio introducir un Email",
+      "lb_emailInvalido": "Debes introducir una direccion de Email válida.",
+      "lb_password": "Contraseña",
+      "lb_passwordObligatorio": "Es obligatorio introducir una contraseña",
+      "lb_passwordInvalido": "Debes introducir una contraseña válida",
+      "lb_passwordOlvidado": "¿Has olvidado tu contraseña?"
+    },
+    "CHECKBOXES": {
+      "ch_recordar": "Recordarme"
+    },
+    "BUTTONS": {
+      "bt_iniciarSesion": "Iniciar Sesión"
+    },
+    "PLACEHOLDERS": {
+      "ph_introduceEmail": "Introduce tu Email",
+      "ph_introducePassword": "Introduce tu contraseña"
+    },
+    "SWALS": {
+      "sw_usuarioNoValido": "El e-mail introducido no es válido, revísalo por favor.",
+      "sw_datosIncorrectos": "Los datos de acceso son incorrectos, revisa los campos introducidos."
+    },
+    "ACCIONES": {
+      "ac_loginUsuarioInvalido": "Login: Usuario Incorrecto / Inválido"
+    }
+  },
+  "RECORDAR_PASSWORD": {
+    "LABELS": {
+      "lb_titulo": "¿Has Olvidado Tu Contraseña? 🔒",
+      "lb_introduceEmail": "Introduce tu dirección de e-mail y, si es correcto, te recordaremos tu contraseña.",
+      "lb_usuario": "Dirección e-mail",
+      "lb_usuarioObligatorio": "Es obligatorio introducir tu dirección e-mail",
+      "lb_usuarioInvalido": "Es obligatorio introducir una dirección e-mail válido"
+    },
+    "BUTTONS": {
+      "bt_recordarContrasenya": "Recordar Contraseña",
+      "bt_volverLogin": "Volver al Login"
+    },
+    "PLACEHOLDERS": {
+      "ph_introduceUsuario": "Introduce tu Usuario"
+    },
+    "SWALS": {
+      "sw_usuarioNoValido": "El usuario introducido no es correcto, revisa los campos introducidos.",
+      "sw_contrasenyaEnviadaTitulo": "Contraseña Enviada",
+      "sw_contrasenyaEnviada": "Acabamos de enviar al correo intoducido la contraseña.<br><br> Revísa tu bandeja de entrada / SPAM para poder visualizarla y acceder a la plataforma. <br><br> Muchas gracias."
+    },
+    "ACCIONES": {
+      "ac_recordarContrasenyaEmailEnviado": "Recordar Contraseña: Email Enviado",
+      "ac_recordarContrasenyaUsuarioInvalido": "Recordar Contraseña: Email Incorrecto"
+    }
+  },
+  "PAG_NO_ENCONTRADA": {
+    "LABELS": {
+      "lb_titulo": "Página No Encontrada 🕵🏻‍♀️",
+      "lb_urlIncorrecta": "Ooops! 😖 No hemos encontrado la URL solicitada. Revísala por favor."
+    },
+    "BUTTONS": {
+      "bt_volverDashboard": "Volver al Dashboard",
+      "bt_volverFormulario": "Recargar Formulario"
+    }
+  },
+  "MENUS": {
+    "RESUMEN": "Resumen",
+    "DASHBOARD": "Dashboard",
+    "REMESAS": "Remesas"
+  },
+  "ANALISIS": {
+    "ESTADISTICAS": {
+      "GENERALES": {
+        "lb_bares": "Total Bares Participantes",
+        "lb_participaciones": "Total Participaciones",
+        "lb_participantesUnicos": "Total Participantes Únicos",
+        "lb_premiosCanjeados": "Total Premios Canjeados"
+      },
+      "PARTICIPACIONES_EDAD": {
+        "LABELS": {
+          "lb_participacionesPorEdad": "Participaciones Por Edad",
+          "lb_seleccionarTop": "Seleccionar TOP",
+          "lb_top5": "Top 5 Edades",
+          "lb_top10": "Top 10 Edades",
+          "lb_top15": "Top 15 Edades",
+          "lb_top20": "Top 20 Edades"
+        },
+        "TOASTR": {
+          "to_hasElegido": "🏆 Has elegido seleccionar las {{arg_numRows}} edades más frecuentadas'",
+          "to_cambioRealizado": "Cambio Realizado!"
+        }
+      },
+      "PARTICIPACIONES_NAVEGADOR": {
+        "LABELS": {
+          "lb_participacionesPorNavegador": "Participaciones Por Navegador"
+        }
+      }
+    },
+    "RESUMEN_PARTICIPANTES": {
+      "TITULOS": {
+        "h4_ultimosParticipantes": "Últimos Participantes"
+      },
+      "LABELS": {
+        "lb_mostrar": "Mostrar"
+      },
+      "PLACEHOLDERS": {
+        "ph_buscar": "Buscar...",
+        "ph_seleccionaEstado": "Selecciona Estado"
+      },
+      "HEADERS": {
+        "h_idParticipacion": "Participación",
+        "h_estado": "Estado",
+        "h_participante": "Participante",
+        "h_bar": "Bar",
+        "h_fechaParticipacion": "Fecha Participación",
+        "h_acciones": "Acciones"
+      }
+    }
+  }
+}

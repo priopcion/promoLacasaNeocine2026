@@ -1,0 +1,332 @@
+// ============================
+// FUENTES
+// ============================
+
+// ============================
+// LAYOUT BASE
+// ============================
+.landing {
+  background-image: url('/assets/images/desktopEroski2026.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+
+.cajaContenido {
+  background-color: rgb(255 255 255 / 85%);
+  border-radius: 3rem;
+}
+
+// ============================
+// TIPOGRAFÍA
+// ============================
+.primerTitulo {
+  font-family: "GrilledCheese BTN", Arial;
+  font-size: 8rem;
+  color: red;
+  padding: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 0 !important;
+  
+  // Sombra estilo cómic/3D
+  text-shadow:
+    3px 3px 0px #c0606080,   // sombra sólida desplazada (efecto offset)
+    5px 5px 0px #d4848460;   // segunda capa más difusa
+}
+
+.subTitulo {
+  font-family: "UniformExtraCondensedReg", Arial;
+  font-size: 3.7rem;
+  color: #4e1c1d;
+  padding-bottom: 0 !important;
+}
+
+.textoPremio {
+  font-family: "UniformExtraCondensedBold", Arial;
+  font-size: 1.8rem;
+  color: #4e1c1d;
+}
+
+// ============================
+// BOTONES
+// ============================
+.btnParticipa {
+  font-size: 5rem;
+  padding: 1.2rem 2.5rem;
+  background: linear-gradient(180deg, #e8251a 0%, #c01010 40%, #a00c0c 100%);
+  color: white;
+  font-family: "GrilledCheese BTN";
+  border-radius: 3rem; // más redondeado, tipo "pill"
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  // Sombra exterior con tono rojizo oscuro
+  box-shadow:
+    0px 6px 0px #6b0000,          // sombra inferior sólida (efecto 3D)
+    0px 8px 12px rgba(0,0,0,0.4), // sombra difusa exterior
+    inset 0px 3px 6px rgba(255,255,255,0.35),  // brillo superior interno
+    inset 0px -3px 5px rgba(0,0,0,0.3);        // oscuro inferior interno
+
+  margin-bottom: 2rem;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+
+  &:hover {
+    background: linear-gradient(180deg, #f02b1f 0%, #d01212 40%, #b00e0e 100%);
+  }
+
+  &:active {
+    transform: translateY(4px);
+    box-shadow:
+      0px 2px 0px #6b0000,
+      0px 3px 6px rgba(0,0,0,0.35),
+      inset 0px 3px 6px rgba(255,255,255,0.25),
+      inset 0px -2px 4px rgba(0,0,0,0.3);
+  }
+}
+
+.btnTicket {
+  min-height: 6vh;
+  font-family: "UniformExtraCondensedBold";
+  font-size: 2rem;
+  padding: 1rem;
+  background-color: white;
+  color: #4e1c1d;
+  border: none;
+  border-radius: 0.8rem;
+  box-shadow: 5px 5px 0px 0px #4e1c1d;
+
+  &:focus {
+    background-color: white;
+    color: #4e1c1d;
+  }
+}
+
+// ============================
+// FORMULARIO
+// ============================
+input {
+  min-height: 6vh;
+  font-family: "UniformExtraCondensedBold";
+  font-size: 2rem;
+  padding: 1rem 1rem 0;
+  background-color: white;
+  color: #4e1c1d;
+  border: none;
+  border-radius: 0.8rem;
+  box-shadow: 5px 5px 0px 0px #4e1c1d;
+
+  &:focus {
+    background-color: white;
+    color: #4e1c1d;
+  }
+
+  &:-webkit-autofill {
+    -webkit-text-fill-color: #4e1c1d !important;
+  }
+}
+
+select {
+  background-color: white;
+  min-height: 6vh;
+  color: #4e1c1d;
+  font-family: "UniformExtraCondensedBold";
+  font-size: 2.3rem;
+  text-align: center;
+  line-height: normal;
+  border: none;
+  border-radius: 0.8rem;
+  box-shadow: 5px 5px 0px 0px #4e1c1d;
+
+  option {
+    background-color: white;
+    color: #4e1c1d;
+    font-size: 1.5rem;
+    font-family: "UniformExtraCondensed";
+  }
+}
+
+::placeholder {
+  color: #4e1c1d;
+  font-family: "UniformExtraCondensedBold";
+  font-size: 2.3rem;
+  text-align: center;
+  font-weight: normal;
+}
+
+.form-control:focus {
+  color: #4e1c1d;
+}
+
+.form-check {
+  padding: 0 0 0 14px !important;
+  text-align: start !important;
+}
+
+.check {
+  box-shadow: none !important;
+  accent-color: #4e1c1d;
+}
+
+label {
+  font-family: "UniformExtraCondensed";
+  font-size: 1.2rem;
+  color: #4e1c1d;
+}
+
+a {
+  font-family: "UniformExtraCondensedBold";
+  font-size: 1.3rem;
+  color: #4e1c1d;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.imagenPreview {
+  background-color: white;
+  border-radius: 0.8rem;
+  box-shadow: 5px 5px 0px 0px #4e1c1d;
+  padding: 2rem 0;
+}
+
+// ============================
+// IMÁGENES RESPONSIVAS
+// ============================
+
+// Logos Lacasitos y Conguitos
+// Desktop: max 300px | Móvil: 80px
+.logo-lacasitos,
+.logo-conguitos {
+  width: 300px;
+  max-width: 300px;
+  height: auto;
+}
+
+// Imágenes de premio (nintendo)
+// Desktop: 500px | Tablet: 250px | Móvil: 200px
+.prize-image {
+  width: 500px;
+  max-width: 100%;
+  height: auto;
+}
+
+// Logo Eroski
+// Desktop: col-lg-4 (~400px) al 35% = ~140px | Móvil: 60% del ancho
+.Eroski-logo {
+  width: 140px;
+  max-width: 60%;
+  height: auto;
+}
+
+// ============================
+// MEDIA QUERIES
+// ============================
+@media (max-width: 767px) {
+  .landing {
+    background-image: url('/assets/images/fondo_mobile_yelmo.webp');
+    background-position: bottom;
+  }
+
+  .cajaContenido {
+    margin-top: 0;
+    padding: 1rem;
+    background-color: rgb(255 255 255 / 90%);
+  }
+
+  .primerTitulo,
+  .subTitulo,
+  .textoPremio {
+    font-size: 1.8rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .laca,
+  .cong {
+    width: 85% !important;
+  }
+
+  .btnParticipa {
+    font-size: 2rem !important;
+  }
+
+  .logoLacasitos {
+    justify-content: flex-start !important;
+  }
+
+  .logoConguitos {
+    justify-content: flex-end !important;
+  }
+
+  // Logos pequeños en móvil
+  .logo-lacasitos,
+  .logo-conguitos {
+    width: 80px;
+    max-width: 500px;
+  }
+
+  // Premio más pequeño en móvil
+  .prize-image {
+    width: 200px;
+  }
+
+  .Eroski-logo {
+    width: auto;
+    max-width: 60%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1280px) {
+
+  .primerTitulo,
+  .subTitulo {
+    font-size: 2.3rem;
+  }
+
+  .btnParticipa {
+    font-size: 1.8rem;
+  }
+
+  // Premio en tablet
+  .prize-image {
+    width: 250px;
+  }
+
+  // Logos medianos en tablet
+  .logo-lacasitos,
+  .logo-conguitos {
+    width: 200px;
+    max-width: 200px;
+  }
+
+  .Eroski-logo {
+    width: 130px;
+    max-width: 35%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logoLacasitos {
+    justify-content: start !important;
+  }
+
+  .logoConguitos {
+    justify-content: end !important;
+  }
+}
+
+@media (min-width: 1110px) {
+  .logoLacasitos {
+    justify-content: start !important;
+  }
+
+  .logoConguitos {
+    justify-content: end !important;
+  }
+}

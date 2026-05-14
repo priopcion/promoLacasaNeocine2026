@@ -1,0 +1,87 @@
+<div class="landing">
+  <div class="container-fluid p-0">
+    <!-- Logos superiores: Lacasitos y Conguitos -->
+    <div class="row mx-0 mt-1 mb-1">
+      <div
+        class="col-12 d-flex justify-content-center align-items-center logosMobile"
+      >
+        <div
+          class="logoLacasitos d-flex justify-content-center align-items-center"
+        >
+          <img
+            class="laca logo-lacasitos"
+            src="../../../../assets/images/logoLacasitos.webp"
+            width="300"
+            height="69"
+            fetchpriority="high"
+            alt="Logo Lacasitos"
+          />
+        </div>
+
+        <div
+          class="logoConguitos d-flex justify-content-center align-items-center"
+        >
+          <img
+            class="cong logo-conguitos"
+            src="../../../../assets/images/logoConguitos.webp"
+            width="300"
+            height="131"
+            fetchpriority="high"
+            alt="Logo Conguitos"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="row mx-0 justify-content-center containerTitulosMobile">
+      <div class="col-12 col-lg-8">
+        <div
+          class="card cajaContenido d-flex flex-column text-center mt-1 mb-3 p-3"
+        >
+          <span class="primerTitulo">
+            CONSIGUE TU ENTRADA <span class="textoGratis">GRATIS</span><br />
+            AL ESCAPE ROOM
+          </span>
+
+          <div class="row text-center py-2">
+            <div class="col-12 col-md-12 d-flex flex-column align-items-center">
+              <img
+                class="prize-image"
+                loading="lazy"
+                src="../../../../assets/images/premioEroski2026.webp"
+                width="300"
+                height="69"
+                alt="Entradas Cocoroom"
+              />
+            </div>
+          </div>
+
+          <span class="segundoTitulo">
+            Y ENTRA EN EL SORTEO PARA CELEBRAR<br />
+            <span class="textoCumple">TU CUMPLEAÑOS </span>
+            <span class="textoGratis">GRATIS</span>
+          </span>
+
+          <div class="mt-3 mb-2">
+            <button
+              routerLink="/formulario"
+              class="btnParticipa col-12 col-md-8 col-xl-8"
+            >
+              QUIERO PARTICIPAR
+            </button>
+          </div>
+        </div>
+        <!-- Logo Eroski solo en móvil -->
+<div class="row mx-0 mt-1 mb-1 d-flex justify-content-center" *ngIf="tamanyoMovil">
+  <img
+    class="Eroski-logo"
+    src="../../../../assets/images/logotipoEroski.webp"
+    fetchpriority="high"
+    alt="Logo Eroski"
+  />
+</div>
+      </div>
+    </div>
+  </div>
+</div>

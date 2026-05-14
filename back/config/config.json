@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "promos_user4568",
+    "password": "Priopcion,2023$$+",
+    "database": "Lacasa",
+    "host": "161.22.47.129",
+    "dialect": "mssql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "promoifa",
+    "password": "RcJL2022$$*xpromo",
+    "database": "PromocionAmstel",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}

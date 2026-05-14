@@ -1,0 +1,131 @@
+<div class="landing">
+  <div class="row w-100">
+    <div class="d-flex">
+      <div class="col-lg-12 m-0" style="height: 0">
+        <div
+          class="col-lg-12 d-flex logosMobile mt-2 mb-2"
+          style="justify-content: center; position: sticky"
+        >
+          <div class="logoLacasitos d-flex justify-content-center align-items-center">
+            <img class="laca logo-lacasitos" src="../../../../assets/images/logoLacasitos.webp"
+              width="300" height="69" fetchpriority="high" alt="Logo Lacasitos"/>
+          </div>
+          <div class="logoConguitos d-flex justify-content-center align-items-center">
+            <img class="cong logo-conguitos" src="../../../../assets/images/logoConguitos.webp"
+              width="300" height="131" fetchpriority="high" alt="Logo Conguitos"/>
+          </div>
+        </div>
+
+        <div class="col-lg-12 d-flex flex-column align-items-center containerTitulosMobile" style="width: 100vw">
+          <div class="d-flex flex-column text-center mt-3 mb-5 col-lg-8 card cajaContenido">
+            <span class="primerTitulo">¡COMPLETA CON TUS DATOS!</span>
+            <div>
+              <form [formGroup]="formDatosUsuario">
+                <div class="form-group row justify-content-center align-items-center">
+
+                  <div class="row col-12 col-lg-10 mt-2">
+                    <div class="form-group col-lg-6 col-12">
+                      <input
+                        [class.is-invalid]="formDatosUsuario.get('Nombre')?.invalid && formDatosUsuario.get('Nombre')?.touched"
+                        formControlName="Nombre" type="text" class="form-control inputDatos"
+                        placeholder="NOMBRE Y APELLIDOS" autocomplete="off"
+                        [ngClass]="{ error: errorInputNombre }"/>
+                    </div>
+                    <div class="form-group col-lg-6 col-12">
+                      <input
+                        [class.is-invalid]="formDatosUsuario.get('Telefono')?.invalid && formDatosUsuario.get('Telefono')?.touched"
+                        formControlName="Telefono" type="text" class="form-control inputDatos"
+                        placeholder="TELÉFONO" autocomplete="off" minlength="9" maxlength="9"
+                        [ngClass]="{ error: errorInputTelefono }"/>
+                    </div>
+                  </div>
+
+                  <div class="row col-12 col-lg-10">
+                    <div class="form-group col-lg-6 col-12">
+                      <input
+                        [class.is-invalid]="formDatosUsuario.get('Email')?.invalid && formDatosUsuario.get('Email')?.touched"
+                        formControlName="Email" type="text" class="form-control inputDatos"
+                        placeholder="E-MAIL" autocomplete="off"
+                        [ngClass]="{ error: errorInputEmail }"/>
+                    </div>
+                    <div class="form-group col-lg-6 col-12">
+                      <select formControlName="Provincia" class="form-control inputDatos"
+                        [class.is-invalid]="formDatosUsuario.get('Provincia')?.invalid && formDatosUsuario.get('Provincia')?.touched">
+                        <option value="" disabled hidden>SELECCIONA PROVINCIA</option>
+                        <option *ngFor="let provincia of provincias" [value]="provincia">{{ provincia }}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="row col-12 col-lg-10 justify-content-center">
+                    <div class="form-group col-lg-6 col-12">
+                      <input #presionaInputFile formControlName="TicketCompra" type="file"
+                        accept="image/*" class="form-control inputDatos inputTicket d-none"
+                        alife-file-to-base64="" (change)="seleccionaFichero($event)"/>
+                      <button [disabled]="imagenAdjunta || docAdjunto" class="btnTicket col-12 btn" (click)="abrirInputFile()">
+                        SUBE TU TICKET
+                      </button>
+                      <div *ngIf="imagenAdjunta" class="imagenPreview mt-2">
+                        <img [src]="sanitize(previewImagen)" width="30%" class="rounded"/>
+                      </div>
+                      <div *ngIf="docAdjunto" class="imagenPreview mt-2">
+                        <span class="w-100 text-center mt-2 text-white d-flex flex-column align-items-center">
+                          <img width="30%" class="imgPdf" src="../../../../assets/logos/pdf.png"/>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-check col-lg-9 col-12 d-flex justify-content-start align-items-center p-0 mb-0">
+                    <input type="checkbox"
+                      [class.is-invalid]="formDatosUsuario.get('terminoCondiciones')?.invalid && formDatosUsuario.get('terminoCondiciones')?.touched"
+                      formControlName="terminoCondiciones" class="check" required/>
+                    <label class="col-md-12 lbl mb-0">
+                      Acepto los
+                      <a target="_blank" href="../../../../assets/pdf/bbll_lacasaCocoRoom2026.pdf">Términos y Condiciones</a>
+                      de la promoción, y la
+                      <a target="_blank" href="https://lacasa.es/content/pdf/politica_de_privacidad.pdf">Política de Privacidad</a>.
+                    </label>
+                  </div>
+
+                  <div class="form-check col-lg-9 col-12 d-flex justify-content-start p-0 mb-1">
+                    <input type="checkbox" formControlName="newsletter" class="check"/>
+                    <label class="col-md-12 lbl mb-0 d-flex align-items-center">
+                      Acepto recibir informaciones y ofertas promocionales.
+                    </label>
+                  </div>
+
+                  <div class="col-12 col-lg-10 text-center">
+                    <button #presionaParticipa [disabled]="formDatosUsuario.invalid"
+                      (click)="participar()"
+                      class="btnParticipa btn btnFuente btnPremio col-12 col-md-6 col-xl-5">
+                      PARTICIPAR
+                    </button>
+                  </div>
+
+                  <div class="d-flex flex-column align-items-center">
+                    <div class="d-flex align-items-center mb-2 mt-1">
+                      <i class="fa fa-envelope-open icon" style="color: #4e1c1d; font-size: 1.5rem; padding-right: 5px;"></i>
+                      <a href="mailto:hola@promocionesgrupolacasa.es">hola@promocionesgrupolacasa.es</a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <i class="fa fa-phone icon" style="color: #4e1c1d; font-size: 1.5rem; padding-right: 5px;"></i>
+                      <span style="color: #4e1c1d; font-size: 1.5rem; font-family: 'UniformExtraCondensedBold';">960261734</span>
+                    </div>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+            
+          </div>
+                  <!-- Logo Eroski solo en móvil -->
+        <div *ngIf="tamanyoMovil" class="col-lg-12 d-flex justify-content-center mb-1">
+          <img class="Eroski-logo" src="../../../../assets/images/logotipoEroski.webp"
+            fetchpriority="high" alt="Logo Eroski"/>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

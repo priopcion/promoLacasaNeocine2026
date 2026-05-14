@@ -1,0 +1,184 @@
+<div class="landing">
+    <div class="row w-100">
+        <div class="d-flex">
+            <div class="col-lg-12 m-0" style="height: 0;">
+
+                <!-- Logos superiores: Lacasitos y Conguitos -->
+                <div class="col-lg-12 d-flex logosMobile mt-2 mb-2"
+                    style="justify-content: center; position: sticky;">
+                    <div class="logoLacasitos d-flex justify-content-center align-items-center">
+                        <img class="laca logo-lacasitos"
+                            src="../../../../assets/images/logoLacasitos.webp"
+                            width="300"
+                            height="69"
+                            fetchpriority="high"
+                            alt="Logo Lacasitos">
+                    </div>
+                    <div class="logoConguitos d-flex justify-content-center align-items-center">
+                        <img class="cong logo-conguitos"
+                            src="../../../../assets/images/logoConguitos.webp"
+                            width="300"
+                            height="131"
+                            fetchpriority="high"
+                            alt="Logo Conguitos">
+                    </div>
+                </div>
+
+                <!-- Contenido principal -->
+                <div class="col-lg-12 d-flex flex-column align-items-center containerTitulosMobile"
+                    style="width: 100vw">
+
+                    <!-- Mensaje: datos validados -->
+                    <ng-container *ngIf="!cargandoDatos && yaValidado">
+                        <div class="d-flex flex-column text-center mt-3 mb-5 col-lg-8 card cajaContenido">
+                            <h1 class="primerTitulo mb-3">TUS DATOS SE HAN VALIDADO CORRECTAMENTE</h1>
+                            <div class="segundoTitulo">En breve recibirás el premio en tu domicilio facilitado.</div>
+                        </div>
+                    </ng-container>
+
+                    <!-- Mensaje: no existente -->
+                    <ng-container *ngIf="!cargandoDatos && noExistente">
+                        <div class="d-flex flex-column text-center mt-3 mb-5 col-lg-8 card cajaContenido">
+                            <h1 class="primerTitulo mb-3">Ooops!</h1>
+                            <div class="segundoTitulo">Lo sentimos, no hemos podido encontrar tus datos. Vuélvelo a
+                                intentar más tarde.</div>
+                        </div>
+                    </ng-container>
+
+                    <!-- Mensaje: expirado -->
+                    <ng-container *ngIf="!cargandoDatos && expirado">
+                        <div class="d-flex flex-column text-center mt-3 mb-5 col-lg-8 card cajaContenido">
+                            <h1 class="primerTitulo mb-3">Ooops!</h1>
+                            <div class="segundoTitulo">Lo sentimos, la validación de este email ha expirado.</div>
+                        </div>
+                    </ng-container>
+
+                    <!-- Formulario -->
+                    <ng-container *ngIf="!cargandoDatos && !noExistente && !yaValidado && !expirado">
+                        <div class="d-flex flex-column text-center col-lg-8 card cajaContenido">
+                            <div class="mb-3 text-center">
+                                <h2 class="segundoTitulo mb-2">
+                                    Verifícanos tus datos para poder enviarte tu
+                                    <strong class="textoPremio">NINTENDO SWITCH</strong>
+                                </h2>
+                                <p class="mb-0" style="font-style: italic">Todos los campos con (*) son obligatorios.</p>
+                            </div>
+
+                            <div>
+                                <form (ngSubmit)="finalizar()" [formGroup]="formDatosUsuario" novalidate>
+
+                                    <div class="form-group row justify-content-center align-items-center">
+
+                                        <div class="row col-12 col-lg-10 mt-2">
+                                            <div class="form-group col-lg-4 col-12">
+                                                <input
+                                                    [class.is-invalid]="formDatosUsuario.get('Nombre')?.invalid && formDatosUsuario.get('Nombre')?.touched"
+                                                    formControlName="Nombre" type="text" class="form-control inputDatos"
+                                                    placeholder="* NOMBRE Y APELLIDOS" id="inputNombre"
+                                                    (change)="controlaModificacionNombre()" />
+                                            </div>
+                                            <div class="form-group col-lg-4 col-12">
+                                                <input
+                                                    [class.is-invalid]="formDatosUsuario.get('Telefono')?.invalid && formDatosUsuario.get('Telefono')?.touched"
+                                                    formControlName="Telefono" type="text" class="form-control inputDatos"
+                                                    placeholder="* TELÉFONO" id="inputTelefono"
+                                                    (change)="controlaModificacionTelefono()" maxlength="9" />
+                                            </div>
+                                            <div class="form-group col-lg-4 col-12">
+                                                <input
+                                                    [class.is-invalid]="formDatosUsuario.get('Email')?.invalid && formDatosUsuario.get('Email')?.touched"
+                                                    formControlName="Email" type="email" class="form-control inputDatos"
+                                                    placeholder="* E-MAIL" id="inputEmail" />
+                                            </div>
+                                        </div>
+                                        <h2 class="segundoTitulo mt-2">
+                                            Dirección de entrega
+                                        </h2>
+                                        <div class="row col-12 col-lg-10 mt-2">
+                                            <div class="form-group col-lg-2 col-12">
+                                                <input
+                                                    [class.is-invalid]="formDatosUsuario.get('TipoVia')?.invalid && formDatosUsuario.get('TipoVia')?.touched"
+                                                    formControlName="TipoVia" type="text" class="form-control inputDatos"
+                                                    placeholder="* TIPO VÍA" id="TipoVia" />
+                                            </div>
+                                            <div class="form-group col-lg-4 col-12">
+                                                <input
+                                                    [class.is-invalid]="formDatosUsuario.get('NombreVia')?.invalid && formDatosUsuario.get('NombreVia')?.touched"
+                                                    formControlName="NombreVia" type="text" class="form-control inputDatos"
+                                                    placeholder="* NOMBRE VÍA" id="nombreVia" />
+                                            </div>
+                                            <div class="form-group col-lg-3 col-12">
+                                                <input
+                                                    [class.is-invalid]="formDatosUsuario.get('NumeroVia')?.invalid && formDatosUsuario.get('NumeroVia')?.touched"
+                                                    formControlName="NumeroVia" type="text" class="form-control inputDatos"
+                                                    placeholder="* Nº VÍA" id="numeroVia" />
+                                            </div>
+                                            <div class="form-group col-lg-3 col-12">
+                                                <input
+                                                    [class.is-invalid]="formDatosUsuario.get('RestoDireccion')?.invalid && formDatosUsuario.get('RestoDireccion')?.touched"
+                                                    formControlName="RestoDireccion" type="text" class="form-control inputDatos"
+                                                    placeholder="PTA, PISO..." id="restoDireccion" />
+                                            </div>
+                                        </div>
+
+                                        <div class="row col-12 col-lg-10 mt-2">
+                                            <div class="form-group col-lg-5 col-12">
+                                                <input
+                                                    [class.is-invalid]="formDatosUsuario.get('Localidad')?.invalid && formDatosUsuario.get('Localidad')?.touched"
+                                                    formControlName="Localidad" type="text" class="form-control inputDatos"
+                                                    placeholder="* LOCALIDAD" id="inputPoblacion" />
+                                            </div>
+                                            <div class="form-group col-lg-5 col-12">
+                                                <select class="form-control inputDatos" formControlName="Provincia"
+                                                    (change)="controlaModificacionProvincia()"
+                                                    [class.is-invalid]="formDatosUsuario.get('Provincia')?.invalid && formDatosUsuario.get('Provincia')?.touched">
+                                                    <option [ngValue]="''" disabled>* PROVINCIA</option>
+                                                    <option *ngFor="let prov of provincias" [value]="prov">{{ prov }}</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-lg-2 col-12">
+                                                <input
+                                                    [class.is-invalid]="formDatosUsuario.get('CP')?.invalid && formDatosUsuario.get('CP')?.touched"
+                                                    formControlName="CP" type="text" class="form-control inputDatos"
+                                                    placeholder="* CP" id="inputCP" maxlength="5" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-check col-lg-9 col-12 d-flex justify-content-start align-items-center p-0 mb-0">
+                                            <input type="checkbox"
+                                                [class.is-invalid]="formDatosUsuario.get('checkPremio')?.invalid && formDatosUsuario.get('checkPremio')?.touched"
+                                                formControlName="checkPremio"
+                                                class="check me-2" id="checkPremio" />
+                                            <label class="col-md-12 lbl mb-0" for="checkPremio">
+                                                Acepto la entrega del premio
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check col-lg-9 col-12 d-flex justify-content-start align-items-center p-0 mb-1">
+                                            <input type="checkbox"
+                                                [class.is-invalid]="formDatosUsuario.get('checkDatos')?.invalid && formDatosUsuario.get('checkDatos')?.touched"
+                                                formControlName="checkDatos"
+                                                class="check me-2" id="checkDatos" />
+                                            <label class="col-md-12 lbl mb-0" for="checkDatos">
+                                                Confirmo que mis datos son correctos.
+                                            </label>
+                                        </div>
+
+                                        <div class="col-12 col-lg-10 text-center">
+                                            <button [disabled]="formDatosUsuario.invalid || cargando" type="submit"
+                                                class="btnParticipa btn btnFuente btnPremio col-12 col-md-6 col-xl-6">
+                                                {{ cargando ? 'Enviando...' : 'VALIDAR MIS DATOS' }}
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

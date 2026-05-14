@@ -1,0 +1,194 @@
+<div class="content-wrapper container-xxl p-0" *ngIf="haCargado">
+  <div class="content-body">
+    <section class="invoice-list-wrapper">
+      <div class="card">
+        <div
+          class="card-header d-flex justify-content-between align-items-end pb-0"
+        >
+          <h4>
+            {{
+              "ANALISIS.RESUMEN_PARTICIPANTES.TITULOS.h4_ultimosParticipantes"
+                | translate
+            }}
+          </h4>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-12">
+            <div class="d-flex justify-content-between align-items-center m-1">
+              <div class="d-flex align-items-center">
+                <label class="d-flex align-items-center"
+                  >{{
+                    "ANALISIS.RESUMEN_PARTICIPANTES.LABELS.lb_mostrar"
+                      | translate
+                  }}
+                  <select
+                    class="form-control mx-25"
+                    [(ngModel)]="registrosSeleccionados"
+                  >
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-md-6 col-lg-4 col-12 d-flex justify-content-start justify-content-md-end align-items-center offset-lg-2"
+          >
+            <div class="row pr-1 pb-1 pb-md-0 align-items-center w-100">
+              <div class="col-10 col-md-6 pr-0">
+                <label class="d-flex align-items-center mb-0 ml-1 ml-md-0"
+                  ><input
+                    [(ngModel)]="valorBusqueda"
+                    name="valorBusqueda"
+                    type="search"
+                    class="form-control"
+                    [placeholder]="
+                      'ANALISIS.RESUMEN_PARTICIPANTES.PLACEHOLDERS.ph_buscar'
+                        | translate
+                    "
+                    (keyup)="filtrar($event)"
+                    (search)="filtrar($event)"
+                /></label>
+              </div>
+              <div class="col-10 col-md-6 mt-2 ml-1 ml-md-0 mt-md-0">
+                <fieldset class="form-group mb-0">
+                  <ng-select
+                    [items]="estados"
+                    [(ngModel)]="estadosSeleccionados"
+                    bindLabel="name"
+                    [placeholder]="
+                      'ANALISIS.RESUMEN_PARTICIPANTES.PLACEHOLDERS.ph_seleccionaEstado'
+                        | translate
+                    "
+                    (change)="filtrarPorEstado($event)"
+                  ></ng-select>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ngx-datatable
+          [rows]="filas"
+          [rowHeight]="60"
+          class="bootstrap core-bootstrap"
+          [limit]="registrosSeleccionados"
+          [columnMode]="modoColumnas.force"
+          [headerHeight]="50"
+          [footerHeight]="50"
+          [scrollbarH]="true"
+        >
+          <ngx-datatable-column name="Participación" [width]="50">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <span class="font-weight-bold">{{ row.Participacion }}</span>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Estado" [width]="50">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <div
+                class="avatar avatar-status"
+                [ngClass]="{
+                  'bg-light-secondary':
+                    row.Estado == 'PREMIADO PERO NO VALIDADO',
+                  'bg-light-success':
+                    row.Estado == 'PARTICIPACIÓN SOSPECHOSAMENTE FRAUDULENTA',
+                  'bg-light-primary': row.Estado == 'NO PREMIADO',
+                  'bg-light-warning': row.Estado == 'PREMIO ABONADO',
+                  'bg-light-info':
+                    row.Estado == 'VOTACIÓN PENDIENTE VALIDACIÓN EMAIL',
+                  'bg-light-danger':
+                    row.Estado == 'PREMIO ANULADO POR OBTENER MAS DE 3'
+                }"
+              >
+                <ng-template #tipContent
+                  ><span>{{ row.Estado }}</span></ng-template
+                >
+                <span
+                  class="avatar-content"
+                  placement="top"
+                  [ngbTooltip]="tipContent"
+                  container="body"
+                >
+                  <i
+                    class="feather avatar-icon font-medium-1"
+                    [ngClass]="{
+                      'icon-send': row.Estado == 'PREMIADO PERO NO VALIDADO',
+                      'icon-check-circle':
+                        row.Estado ==
+                        'PARTICIPACIÓN SOSPECHOSAMENTE FRAUDULENTA',
+                      'icon-save': row.Estado == 'NO PREMIADO',
+                      'icon-pie-chart': row.Estado == 'PREMIO ABONADO',
+                      'icon-arrow-down-circle':
+                        row.Estado == 'VOTACIÓN PENDIENTE VALIDACIÓN EMAIL',
+                      'icon-info':
+                        row.Estado == 'PREMIO ANULADO POR OBTENER MAS DE 3'
+                    }"
+                  ></i
+                ></span>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Participante" [width]="250">
+            <ng-template
+              let-row="row"
+              let-Participante="value"
+              ngx-datatable-cell-template
+            >
+              <div class="d-flex align-items-center">
+                <div class="cell-line-height">
+                  <span
+                    class="font-weight-bold d-block text-nowrap font-medium-1"
+                    >{{ row.Participante }}</span
+                  >
+                  <span class="text-muted font-small-2"> {{ row.Email }}</span
+                  ><br />
+                  <span class="text-muted font-small-2">
+                    {{ row.Telefono }}</span
+                  >
+                </div>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Bar" [width]="200">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <div class="d-flex align-items-center">
+                <div class="cell-line-height">
+                  <span
+                    class="font-weight-bold d-block text-nowrap font-medium-1"
+                    >{{ row.Nombre }}</span
+                  >
+                </div>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Fecha Participación" [width]="200">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <div class="d-flex align-items-center">
+                <div class="cell-line-height">
+                  <span
+                    class="font-weight-bold d-block text-nowrap font-medium-1"
+                    >{{ row.FechaParticipacion }}</span
+                  >
+                </div>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Localidad">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <div class="d-flex align-items-center">
+                <div class="cell-line-height">
+                  <span
+                    class="font-weight-bold d-block text-nowrap font-medium-1"
+                    >{{ row.Localidad }}</span
+                  >
+                </div>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+    </section>
+  </div>
+</div>
