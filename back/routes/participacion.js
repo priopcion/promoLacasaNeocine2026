@@ -3,19 +3,17 @@ var express = require("express");
 var router = express.Router();
 
 const {
-    insertParticipacionEroski2026,
-    getPremioEroski2026,
-    getDatosUsuarioEroski2026,
-    enviarDatosValidacionEroski2026,
-    getTiendasEroski2026,
-        getProvinciasCocoRoom,
+    insertParticipacionNeocine2026,
+    getPremioNeocine2026,
+    getDatosUsuarioNeocine2026,
+    enviarDatosValidacionNeocine2026,
+    getTiendasNeocine2026,
 
 } = require("../controllers/participacionController");
 
-router.post("/insertParticipacionEroski2026", insertParticipacionEroski2026);
-router.get("/provinciasCocoRoom", getProvinciasCocoRoom);
-router.get("/getTiendasEroski2026", getTiendasEroski2026);
-router.get("/premioEroski2026/:idParticipante/:idPremio", getPremioEroski2026);
-router.get("/datosUsuario/:IdParticipante/:CorreoParticipante", getDatosUsuarioEroski2026);
-router.post("/datosValidacion", enviarDatosValidacionEroski2026);
+router.post("/insertParticipacionNeocine2026", insertParticipacionNeocine2026);
+router.get("/getTiendasNeocine2026", getTiendasNeocine2026);
+router.get("/premioNeocine2026/:idParticipante/:idPremio", getPremioNeocine2026);
+router.get("/datosUsuario/:IdParticipante/:CorreoParticipante", getDatosUsuarioNeocine2026);
+router.post("/datosValidacion", enviarDatosValidacionNeocine2026);
 module.exports = router;

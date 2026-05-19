@@ -129,11 +129,11 @@
                                                     placeholder="* LOCALIDAD" id="inputPoblacion" />
                                             </div>
                                             <div class="form-group col-lg-5 col-12">
-                                                <select class="form-control inputDatos" formControlName="Provincia"
+                                                <select class="form-control inputDatos" formControlName="Tienda"
                                                     (change)="controlaModificacionProvincia()"
-                                                    [class.is-invalid]="formDatosUsuario.get('Provincia')?.invalid && formDatosUsuario.get('Provincia')?.touched">
-                                                    <option [ngValue]="''" disabled>* PROVINCIA</option>
-                                                    <option *ngFor="let prov of provincias" [value]="prov">{{ prov }}</option>
+                                                    [class.is-invalid]="formDatosUsuario.get('Tienda')?.invalid && formDatosUsuario.get('Tienda')?.touched">
+                                                    <option [ngValue]="''" disabled>* CINE</option>
+                                                    <option *ngFor="let prov of tiendas" [value]="prov">{{ prov }}</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-lg-2 col-12">

@@ -17,7 +17,7 @@ export class LandingFormularioComponent implements OnInit {
   @ViewChild("presionaInputFile") presionaInputFile!: ElementRef;
 
   formDatosUsuario!: FormGroup;
-  provincias: string[] = [];
+  tiendas: string[] = [];
   tamanyoMovil = false;
 
   ocultarDiv = false;
@@ -55,9 +55,9 @@ export class LandingFormularioComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    localStorage.setItem("lastRoute", `/lacaeroski`);
+    localStorage.setItem("lastRoute", `/lacaNeocine`);
     this.iniciaFormularioDatosUsuario();
-    this.getProvinciasCocoRoom();
+    this.getTiendasNeocine2026();
     this.detectaDimensionesPantalla();
     this.getIPUsuario();
     this.getDatosDispositivo();
@@ -84,15 +84,15 @@ export class LandingFormularioComponent implements OnInit {
       Email: ["", [Validators.required, Validators.pattern(/^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$/)]],
       TicketCompra: ["", Validators.required],
       Telefono: ["", [Validators.required, Validators.pattern(/^[6789]\d{2}[\s]?\d{3}[\s]?\d{3}$/)]],
-      Provincia: ["", Validators.required],
+      Tienda: ["", Validators.required],
       terminoCondiciones: ["", Validators.required],
       newsletter: [],
     });
   }
 
-  getProvinciasCocoRoom() {
-    this.participaService.getProvinciasCocoRoom().subscribe((data: any) => {
-      this.provincias = data;
+  getTiendasNeocine2026() {
+    this.participaService.getTiendasNeocine2026().subscribe((data: any) => {
+      this.tiendas = data;
       this.cdr.detectChanges();
     });
   }
@@ -134,13 +134,14 @@ export class LandingFormularioComponent implements OnInit {
     formData.append("Nombre", datosFormulario.Nombre);
     formData.append("Telefono", datosFormulario.Telefono);
     formData.append("Email", datosFormulario.Email);
-    formData.append("Provincia", datosFormulario.Provincia);
+    formData.append("Tienda", datosFormulario.Tienda);
     formData.append("fichero", this.file.name);
     formData.append("file", this.file);
     formData.append("Newsletter", ckNewsletter.toString());
 
     this.participaService.insertParticipacion(formData).subscribe({
       next: () => {
+        sessionStorage.setItem('participacionValida', 'true');
         this.router.navigate(["/ganador"]);
       },
       error: () => {

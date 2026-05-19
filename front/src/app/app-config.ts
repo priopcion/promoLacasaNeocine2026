@@ -3,8 +3,8 @@ import { CoreConfig } from "@core/types";
 // prettier-ignore
 export const coreConfig: CoreConfig = {
   app: {
-    appName: "Lacasitos y Conguitos con Eroski", // App Name
-    appTitle: "Lacasitos y Conguitos con Eroski", // App Title
+    appName: "Lacasitos y Conguitos con Neocine", // App Name
+    appTitle: "Lacasitos y Conguitos con Neocine", // App Title
     appLogoImage: "https://lacasitos.com/wp-content/uploads/2022/10/lacasitos-grageas-tradicional-amarillo.png", // App Logo
     appLanguage: "es", // App Default Language (en, fr, de, pt etc..)
   },

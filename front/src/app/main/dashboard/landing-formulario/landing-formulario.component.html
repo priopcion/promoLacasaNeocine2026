@@ -49,10 +49,10 @@
                         [ngClass]="{ error: errorInputEmail }"/>
                     </div>
                     <div class="form-group col-lg-6 col-12">
-                      <select formControlName="Provincia" class="form-control inputDatos"
-                        [class.is-invalid]="formDatosUsuario.get('Provincia')?.invalid && formDatosUsuario.get('Provincia')?.touched">
-                        <option value="" disabled hidden>SELECCIONA PROVINCIA</option>
-                        <option *ngFor="let provincia of provincias" [value]="provincia">{{ provincia }}</option>
+                      <select formControlName="Tienda" class="form-control inputDatos"
+                        [class.is-invalid]="formDatosUsuario.get('Tienda')?.invalid && formDatosUsuario.get('Tienda')?.touched">
+                        <option value="" disabled hidden>SELECCIONA CINE</option>
+                        <option *ngFor="let tienda of tiendas" [value]="tienda.IdTienda">{{ tienda.Nombre }}</option>
                       </select>
                     </div>
                   </div>
@@ -82,7 +82,7 @@
                       formControlName="terminoCondiciones" class="check" required/>
                     <label class="col-md-12 lbl mb-0">
                       Acepto los
-                      <a target="_blank" href="../../../../assets/pdf/bbll_lacasaCocoRoom2026.pdf">Términos y Condiciones</a>
+                      <a target="_blank" href="../../../../assets/pdf/bbll_lacasaNeocine2026.pdf">Términos y Condiciones</a>
                       de la promoción, y la
                       <a target="_blank" href="https://lacasa.es/content/pdf/politica_de_privacidad.pdf">Política de Privacidad</a>.
                     </label>
@@ -119,10 +119,10 @@
             </div>
             
           </div>
-                  <!-- Logo Eroski solo en móvil -->
+                  <!-- Logo Neocine solo en móvil -->
         <div *ngIf="tamanyoMovil" class="col-lg-12 d-flex justify-content-center mb-1">
-          <img class="Eroski-logo" src="../../../../assets/images/logotipoEroski.webp"
-            fetchpriority="high" alt="Logo Eroski"/>
+          <img class="Neocine-logo" src="../../../../assets/images/logotipoNeocine.webp"
+            fetchpriority="high" alt="Logo Neocine"/>
         </div>
         </div>
       </div>

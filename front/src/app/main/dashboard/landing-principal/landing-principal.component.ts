@@ -13,7 +13,6 @@ import Swal from "sweetalert2";
 import { TranslateService } from "@ngx-translate/core";
 import { ParticipacionService } from "app/services/participacion.service";
 import { Router } from "@angular/router";
-import { EnvioCorreoService } from "app/services/envioCorreo.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Title } from "@angular/platform-browser";
 
@@ -30,7 +29,6 @@ export class LandingPrincipalComponent implements OnInit, AfterViewInit {
     private fb: FormBuilder,
     private translate: TranslateService,
     private participaService: ParticipacionService,
-    private correoService: EnvioCorreoService,
     private router: Router,
     private titleService: Title,
     private modalService: NgbModal

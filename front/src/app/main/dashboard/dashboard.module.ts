@@ -10,7 +10,6 @@ import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
 
 import { CoreCommonModule } from "@core/common.module";
 
-import { InvoiceModule } from "app/main/apps/invoice/invoice.module";
 
 import { DashboardService } from "app/main/dashboard/dashboard.service";
 
@@ -20,11 +19,9 @@ import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { NgSelectModule } from "@ng-select/ng-select";
 
 import { NgxDropzoneModule } from "ngx-dropzone";
-import { CoreCardModule } from "@core/components/core-card/core-card.module";
 import { LandingPrincipalComponent } from "./landing-principal/landing-principal.component";
 import { FooterComponent } from "app/layout/components/footer/footer.component";
 import { ScrollTopComponent } from "app/layout/components/footer/scroll-to-top/scroll-top.component";
-import { NavbarModule } from "app/layout/components/navbar/navbar.module";
 import { ValidacionComponent } from "./validacion/validacion.component";
 import { LandingFormularioComponent } from "./landing-formulario/landing-formulario.component";
 import { LandingGanadorComponent } from "./landing-ganador/landing-ganador.component";
@@ -73,15 +70,12 @@ const routes = [
     PerfectScrollbarModule,
     CoreCommonModule,
     NgApexchartsModule,
-    InvoiceModule,
     ReactiveFormsModule,
     FormsModule,
     NgxDatatableModule,
     BlockUIModule.forRoot(),
     NgSelectModule,
     NgxDropzoneModule,
-    CoreCardModule,
-    NavbarModule,
   ],
   providers: [DashboardService],
 })

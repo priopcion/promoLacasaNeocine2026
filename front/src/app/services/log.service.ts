@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "environments/environment";
 
 const insertLogDatosIncorrectos = environment.insertLogDatosIncorrectos;
-const insertLogDatosParticipacionEroski = environment.insertLogDatosParticipacionEroski;
+const insertLogDatosParticipacionNeocine = environment.insertLogDatosParticipacionNeocine;
 
 @Injectable({ providedIn: "root" })
 export class LogService {
@@ -15,6 +15,6 @@ export class LogService {
   }
 
   logInsertParticipacion(datosInsertLog: any) {
-    return this.http.post(insertLogDatosParticipacionEroski, datosInsertLog);
+    return this.http.post(insertLogDatosParticipacionNeocine, datosInsertLog);
   }
 }

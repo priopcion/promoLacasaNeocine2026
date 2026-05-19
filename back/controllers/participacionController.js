@@ -15,16 +15,16 @@ async function getImageHash(filePath) {
   });
 }
 
-async function insertParticipacionEroski2026(req, res) {
+async function insertParticipacionNeocine2026(req, res) {
   const t = await sequelize.transaction();
 
   let nombre = req.body.Nombre;
   let telefono = req.body.Telefono;
   let email = req.body.Email;
-  let provincia = req.body.Provincia; // 👈
+  let tienda = req.body.Tienda;
   let newsletter = req.body.Newsletter;
 
-  let idPromocion = 1054;
+  let idPromocion = 1055;
   let fecha = new Date();
   let idParticipante = 0;
   let rutaDest = null;
@@ -44,8 +44,7 @@ async function insertParticipacionEroski2026(req, res) {
         @nombre = :nombre, 
         @telefono = :telefono,
         @email = :email,
-        @provincia = :provincia,
-        @idTienda = :idTienda,
+        @idTienda = :tienda,
         @newsletter = :newsletter,
         @idPromocion = :idPromocion`,
       {
@@ -53,8 +52,7 @@ async function insertParticipacionEroski2026(req, res) {
           nombre,
           telefono,
           email,
-          provincia, // 👈
-          idTienda: "",
+          tienda,
           newsletter: parseInt(newsletter, 10),
           idPromocion,
         },
@@ -115,7 +113,7 @@ async function insertParticipacionEroski2026(req, res) {
     return res.status(200).json({ ok: true, idParticipante, fechaPart });
 
   } catch (error) {
-    console.error("Error en insertParticipacionEroski2026:", error);
+    console.error("Error en insertParticipacionNeocine2026:", error);
     await t.rollback();
 
     if (rutaDest) {
@@ -133,23 +131,10 @@ async function insertParticipacionEroski2026(req, res) {
   }
 }
 
-async function getProvinciasCocoRoom(req, res) {
-  try {
-    const provincias = await sequelize.query(`sp_getProvincias`);
-    const arrayProvincias = provincias[0]
-      .filter((p) => p.Activo === 1)  
-      .map((p) => p.Nombre);
-    res.status(200).json(arrayProvincias);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json("error");
-  }
-}
-
-async function getPremioEroski2026(req, res) {
+async function getPremioNeocine2026(req, res) {
   let idPremio = req.params.idPremio;
   let idParticipante = req.params.idParticipante;
-  let idPromocion = 1054;
+  let idPromocion = 1055;
 
   try {
     const premio = await sequelize.query(
@@ -170,7 +155,7 @@ async function getPremioEroski2026(req, res) {
   }
 }
 
-async function getDatosUsuarioEroski2026(req, res) {
+async function getDatosUsuarioNeocine2026(req, res) {
   let idParticipante = req.params.IdParticipante;
   let email = req.params.CorreoParticipante;
 
@@ -201,7 +186,7 @@ async function getDatosUsuarioEroski2026(req, res) {
   }
 }
 
-async function enviarDatosValidacionEroski2026(req, res) {
+async function enviarDatosValidacionNeocine2026(req, res) {
   let idParticipante = req.body.IdParticipante;
   let nombre = req.body.Nombre;
   let telefono = req.body.Telefono;
@@ -211,7 +196,7 @@ async function enviarDatosValidacionEroski2026(req, res) {
   let numeroVia = req.body.NumeroVia;
   let restoDireccion = req.body.RestoDireccion;
   let localidad = req.body.Localidad;
-  let provincia = req.body.Provincia;
+  let tienda = req.body.Tienda;
   let cp = req.body.CP;
 
   try {
@@ -220,9 +205,9 @@ async function enviarDatosValidacionEroski2026(req, res) {
         @nombre = :nombre, @telefono = :telefono, @email = :email, 
         @tipoVia = :tipoVia, @nombreVia = :nombreVia, @numeroVia = :numeroVia, 
         @restoDireccion = :restoDireccion, @localidad = :localidad,
-        @provincia = :provincia, @cp = :cp, @idParticipante = :idParticipante`,
+        @tienda = :tienda, @cp = :cp, @idParticipante = :idParticipante`,
       {
-        replacements: { nombre, telefono, email, tipoVia, nombreVia, numeroVia, restoDireccion, localidad, provincia, cp, idParticipante },
+        replacements: { nombre, telefono, email, tipoVia, nombreVia, numeroVia, restoDireccion, localidad, tienda, cp, idParticipante },
       },
     );
 
@@ -233,8 +218,8 @@ async function enviarDatosValidacionEroski2026(req, res) {
   }
 }
 
-async function getTiendasEroski2026(req, res) {
-  let idPromocion = 1054;
+async function getTiendasNeocine2026(req, res) {
+  let idPromocion = 1055;
   try {
     const tiendas = await sequelize.query(`sp_getTiendas @idPromocion = :idPromocion`, { replacements: { idPromocion } });
     res.status(200).json(tiendas[0]);
@@ -245,10 +230,9 @@ async function getTiendasEroski2026(req, res) {
 }
 
 module.exports = {
-  insertParticipacionEroski2026,
-  getPremioEroski2026,
-  getTiendasEroski2026,
-  getDatosUsuarioEroski2026,
-  enviarDatosValidacionEroski2026,
-  getProvinciasCocoRoom
+  insertParticipacionNeocine2026,
+  getPremioNeocine2026,
+  getTiendasNeocine2026,
+  getDatosUsuarioNeocine2026,
+  enviarDatosValidacionNeocine2026,
 };

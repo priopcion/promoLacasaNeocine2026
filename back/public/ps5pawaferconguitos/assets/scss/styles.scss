@@ -6,7 +6,7 @@
 // LAYOUT BASE
 // ============================
 .landing {
-  background-image: url('/assets/images/desktopEroski2026.webp');
+  background-image: url('/assets/images/desktopNeocine2026.webp');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -216,9 +216,9 @@ a {
   height: auto;
 }
 
-// Logo Eroski
+// Logo Neocine
 // Desktop: col-lg-4 (~400px) al 35% = ~140px | Móvil: 60% del ancho
-.Eroski-logo {
+.Neocine-logo {
   width: 140px;
   max-width: 60%;
   height: auto;
@@ -276,7 +276,7 @@ a {
     width: 200px;
   }
 
-  .Eroski-logo {
+  .Neocine-logo {
     width: auto;
     max-width: 60%;
   }
@@ -305,7 +305,7 @@ a {
     max-width: 200px;
   }
 
-  .Eroski-logo {
+  .Neocine-logo {
     width: 130px;
     max-width: 35%;
   }

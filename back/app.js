@@ -7,7 +7,6 @@ const cors = require("cors");
 var multipart = require("connect-multiparty");
 
 var participacion = require("./routes/participacion");
-var correo = require("./routes/envioCorreo");
 var log = require("./routes/log");
 
 var app = express();
@@ -47,7 +46,6 @@ app.use(function (req, res, next) {
 });
 
 app.use("/participaciones", participacion);
-app.use("/correo", correo);
 app.use("/log", log);
 
 app.use(function (req, res, next) {

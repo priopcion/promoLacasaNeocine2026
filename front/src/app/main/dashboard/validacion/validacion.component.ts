@@ -30,7 +30,7 @@ export class ValidacionComponent implements OnInit {
   cargando = false;
   cargandoDatos = true;
 
-  provincias = null;
+  tiendas = null;
   idParticipante = "";
   CorreoParticipante = "";
 
@@ -46,7 +46,7 @@ export class ValidacionComponent implements OnInit {
   ngOnInit(): void {
     this.iniciaFormularioDatosUsuario();
     this.controlarURL();
-    this.getProvinciasCocoRoom();
+    this.getTiendasNeocine2026();
   }
 
   iniciaFormularioDatosUsuario() {
@@ -60,7 +60,7 @@ export class ValidacionComponent implements OnInit {
       RestoDireccion: ["", [Validators.maxLength(100)]],
       CP:             ["", [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
       Localidad:      ["", [Validators.required, Validators.maxLength(100)]],
-      Provincia:      ["", [Validators.required, Validators.maxLength(100)]],
+      Tienda:      ["", [Validators.required, Validators.maxLength(100)]],
       checkPremio:    [false, [Validators.requiredTrue]],
       checkDatos:     [false, [Validators.requiredTrue]],
     });
@@ -93,11 +93,11 @@ export class ValidacionComponent implements OnInit {
       NumeroVia:       datosFormulario.NumeroVia,
       RestoDireccion:  datosFormulario.RestoDireccion,
       Localidad:       datosFormulario.Localidad,
-      Provincia:       datosFormulario.Provincia,
+      Tienda:       datosFormulario.Tienda,
       CP:              datosFormulario.CP,
     };
 
-    this.participaService.enviarDatosValidacionEroski2026(participante).subscribe({
+    this.participaService.enviarDatosValidacionNeocine2026(participante).subscribe({
       next: () => {
         this.ngZone.run(() => {
           this.cargando = false;
@@ -134,10 +134,10 @@ export class ValidacionComponent implements OnInit {
     this.provinciaHaSidoModificado = true;
   }
 
-  getProvinciasCocoRoom() {
-    this.participaService.getProvinciasCocoRoom().subscribe((data: any) => {
+  getTiendasNeocine2026() {
+    this.participaService.getTiendasNeocine2026().subscribe((data: any) => {
       this.ngZone.run(() => {
-        this.provincias = data;
+        this.tiendas = data;
         this.cdr.detectChanges();
       });
     });
@@ -152,7 +152,7 @@ export class ValidacionComponent implements OnInit {
     }
 
     this.participaService
-      .getDatosUsuarioEroski2026(this.idParticipante, this.CorreoParticipante)
+      .getDatosUsuarioNeocine2026(this.idParticipante, this.CorreoParticipante)
       .subscribe({
         next: (data: any) => {
           this.ngZone.run(() => {

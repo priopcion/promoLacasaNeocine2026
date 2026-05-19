@@ -10,8 +10,6 @@ import { ContextMenuModule } from "@ctrl/ngx-rightclick";
 
 import { CoreModule } from "@core/core.module";
 import { CoreCommonModule } from "@core/common.module";
-import { CoreSidebarModule, CoreThemeCustomizerModule } from "@core/components";
-import { CardSnippetModule } from "@core/components/card-snippet/card-snippet.module";
 
 import { coreConfig } from "app/app-config";
 import { AppComponent } from "app/app.component";
@@ -85,9 +83,6 @@ const routerOptions: ExtraOptions = {
     ContextMenuModule,
     CoreModule.forRoot(coreConfig),
     CoreCommonModule,
-    CoreSidebarModule,
-    CoreThemeCustomizerModule,
-    CardSnippetModule,
     LayoutModule,
     ContentHeaderModule,
   ],

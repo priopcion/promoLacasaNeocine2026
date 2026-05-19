@@ -52,26 +52,18 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/highlight.js/scss/atom-one-dark.scss",
               "src/assets/fonts/feather/iconfont.css",
               "src/assets/fonts/font-awesome/css/font-awesome.min.css",
-              "src/assets/fonts/flag-icon-css/css/flag-icon.min.css",
-              "./node_modules/@fullcalendar/common/main.css",
-              "./node_modules/@fullcalendar/daygrid/main.css",
-              "./node_modules/@fullcalendar/timegrid/main.css",
-              "./node_modules/@fullcalendar/list/main.css"
+              "src/assets/fonts/flag-icon-css/css/flag-icon.min.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "node_modules",
                 "src/assets/",
-                "src/"   
+                "src/"
               ]
             },
-            "scripts": [
-              "./node_modules/katex/dist/katex.min.js",
-              "./node_modules/quill/dist/quill.min.js"
-            ],
+            "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
@@ -87,7 +79,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "baseHref": "/lacaconguicocoroom",
+              "baseHref": "/neocineps5",
               "optimization": {
                 "scripts": true,
                 "styles": true,

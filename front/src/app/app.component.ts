@@ -15,7 +15,6 @@ import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 import * as Waves from "node-waves";
 
-import { CoreSidebarService } from "@core/components/core-sidebar/core-sidebar.service";
 import { CoreConfigService } from "@core/services/config.service";
 
 import { TranslateService } from "@ngx-translate/core";
@@ -40,7 +39,6 @@ export class AppComponent implements OnInit, OnDestroy {
     private _renderer: Renderer2,
     private _elementRef: ElementRef,
     public _coreConfigService: CoreConfigService,
-    private _coreSidebarService: CoreSidebarService,
     private translate: TranslateService,
     private cdr: ChangeDetectorRef
   ) {
@@ -59,9 +57,8 @@ export class AppComponent implements OnInit, OnDestroy {
      */
     this._coreConfigService.config
       .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((config) => {
+      .subscribe((config: any) => {
         this.coreConfig = config;
-        this.translate.use(this.coreConfig.app.appLanguage);
       });
   }
 
@@ -74,117 +71,117 @@ export class AppComponent implements OnInit, OnDestroy {
     // }
     Waves.init();
 
-    this._coreConfigService.config
-      .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe((config) => {
-        this.coreConfig = config;
-        this._elementRef.nativeElement.classList.remove(
-          "vertical-layout",
-          "vertical-menu-modern",
-          "horizontal-layout",
-          "horizontal-menu"
-        );
-        if (this.coreConfig.layout.type === "vertical") {
-          this._elementRef.nativeElement.classList.add(
-            "vertical-layout",
-            "vertical-menu-modern"
-          );
-        } else if (this.coreConfig.layout.type === "horizontal") {
-          this._elementRef.nativeElement.classList.add(
-            "horizontal-layout",
-            "horizontal-menu"
-          );
-        }
+    // this._coreConfigService.config
+    //   .pipe(takeUntil(this._unsubscribeAll))
+    //   .subscribe((config) => {
+    //     this.coreConfig = config;
+    //     this._elementRef.nativeElement.classList.remove(
+    //       "vertical-layout",
+    //       "vertical-menu-modern",
+    //       "horizontal-layout",
+    //       "horizontal-menu"
+    //     );
+    //     if (this.coreConfig.layout.type === "vertical") {
+    //       this._elementRef.nativeElement.classList.add(
+    //         "vertical-layout",
+    //         "vertical-menu-modern"
+    //       );
+    //     } else if (this.coreConfig.layout.type === "horizontal") {
+    //       this._elementRef.nativeElement.classList.add(
+    //         "horizontal-layout",
+    //         "horizontal-menu"
+    //       );
+    //     }
 
-        this._elementRef.nativeElement.classList.remove(
-          "navbar-floating",
-          "navbar-static",
-          "navbar-sticky",
-          "navbar-hidden"
-        );
+    //     this._elementRef.nativeElement.classList.remove(
+    //       "navbar-floating",
+    //       "navbar-static",
+    //       "navbar-sticky",
+    //       "navbar-hidden"
+    //     );
 
-        if (this.coreConfig.layout.navbar.type === "navbar-static-top") {
-          this._elementRef.nativeElement.classList.add("navbar-static");
-        } else if (this.coreConfig.layout.navbar.type === "fixed-top") {
-          this._elementRef.nativeElement.classList.add("navbar-sticky");
-        } else if (this.coreConfig.layout.navbar.type === "floating-nav") {
-          this._elementRef.nativeElement.classList.add("navbar-floating");
-        } else {
-          this._elementRef.nativeElement.classList.add("navbar-hidden");
-        }
+    //     if (this.coreConfig.layout.navbar.type === "navbar-static-top") {
+    //       this._elementRef.nativeElement.classList.add("navbar-static");
+    //     } else if (this.coreConfig.layout.navbar.type === "fixed-top") {
+    //       this._elementRef.nativeElement.classList.add("navbar-sticky");
+    //     } else if (this.coreConfig.layout.navbar.type === "floating-nav") {
+    //       this._elementRef.nativeElement.classList.add("navbar-floating");
+    //     } else {
+    //       this._elementRef.nativeElement.classList.add("navbar-hidden");
+    //     }
 
-        this._elementRef.nativeElement.classList.remove(
-          "footer-fixed",
-          "footer-static",
-          "footer-hidden"
-        );
+    //     this._elementRef.nativeElement.classList.remove(
+    //       "footer-fixed",
+    //       "footer-static",
+    //       "footer-hidden"
+    //     );
 
-        if (this.coreConfig.layout.footer.type === "footer-sticky") {
-          this._elementRef.nativeElement.classList.add("footer-fixed");
-        } else if (this.coreConfig.layout.footer.type === "footer-static") {
-          this._elementRef.nativeElement.classList.add("footer-static");
-        } else {
-          this._elementRef.nativeElement.classList.add("footer-hidden");
-        }
+    //     if (this.coreConfig.layout.footer.type === "footer-sticky") {
+    //       this._elementRef.nativeElement.classList.add("footer-fixed");
+    //     } else if (this.coreConfig.layout.footer.type === "footer-static") {
+    //       this._elementRef.nativeElement.classList.add("footer-static");
+    //     } else {
+    //       this._elementRef.nativeElement.classList.add("footer-hidden");
+    //     }
 
-        if (
-          this.coreConfig.layout.menu.hidden &&
-          this.coreConfig.layout.navbar.hidden &&
-          this.coreConfig.layout.footer.hidden
-        ) {
-          this._elementRef.nativeElement.classList.add("blank-page");
+    //     if (
+    //       this.coreConfig.layout.menu.hidden &&
+    //       this.coreConfig.layout.navbar.hidden &&
+    //       this.coreConfig.layout.footer.hidden
+    //     ) {
+    //       this._elementRef.nativeElement.classList.add("blank-page");
 
-          const appContent = this._elementRef.nativeElement.getElementsByClassName("app-content")[0];
-          if (appContent) {
-            this._renderer.setAttribute(appContent, "style", "transition:none");
-          }
-        } else {
-          this._elementRef.nativeElement.classList.remove("blank-page");
-          // setTimeout(() => {
-          //   this._renderer.setAttribute(
-          //     this._elementRef.nativeElement.getElementsByClassName(
-          //       "app-content"
-          //     )[0],
-          //     "style",
-          //     "transition:300ms ease all"
-          //   );
-          // }, 0);
-          if (this.coreConfig.layout.navbar.hidden) {
-            this._elementRef.nativeElement.classList.add("navbar-hidden");
-          }
-          if (this.coreConfig.layout.menu.hidden) {
-            this._renderer.setAttribute(
-              this._elementRef.nativeElement,
-              "data-col",
-              "1-column"
-            );
-          } else {
-            this._renderer.removeAttribute(
-              this._elementRef.nativeElement,
-              "data-col"
-            );
-          }
-          if (this.coreConfig.layout.footer.hidden) {
-            this._elementRef.nativeElement.classList.add("footer-hidden");
-          }
-        }
+    //       const appContent = this._elementRef.nativeElement.getElementsByClassName("app-content")[0];
+    //       if (appContent) {
+    //         this._renderer.setAttribute(appContent, "style", "transition:none");
+    //       }
+    //     } else {
+    //       this._elementRef.nativeElement.classList.remove("blank-page");
+    //       // setTimeout(() => {
+    //       //   this._renderer.setAttribute(
+    //       //     this._elementRef.nativeElement.getElementsByClassName(
+    //       //       "app-content"
+    //       //     )[0],
+    //       //     "style",
+    //       //     "transition:300ms ease all"
+    //       //   );
+    //       // }, 0);
+    //       if (this.coreConfig.layout.navbar.hidden) {
+    //         this._elementRef.nativeElement.classList.add("navbar-hidden");
+    //       }
+    //       if (this.coreConfig.layout.menu.hidden) {
+    //         this._renderer.setAttribute(
+    //           this._elementRef.nativeElement,
+    //           "data-col",
+    //           "1-column"
+    //         );
+    //       } else {
+    //         this._renderer.removeAttribute(
+    //           this._elementRef.nativeElement,
+    //           "data-col"
+    //         );
+    //       }
+    //       if (this.coreConfig.layout.footer.hidden) {
+    //         this._elementRef.nativeElement.classList.add("footer-hidden");
+    //       }
+    //     }
 
-        if (
-          this.coreConfig.layout.skin !== "" &&
-          this.coreConfig.layout.skin !== undefined
-        ) {
-          this.document.body.classList.remove(
-            "default-layout",
-            "bordered-layout",
-            "dark-layout",
-            "semi-dark-layout"
-          );
-          this.document.body.classList.add(
-            this.coreConfig.layout.skin + "-layout"
-          );
-        }
-        this.cdr.markForCheck();
-      });
+    //     if (
+    //       this.coreConfig.layout.skin !== "" &&
+    //       this.coreConfig.layout.skin !== undefined
+    //     ) {
+    //       this.document.body.classList.remove(
+    //         "default-layout",
+    //         "bordered-layout",
+    //         "dark-layout",
+    //         "semi-dark-layout"
+    //       );
+    //       this.document.body.classList.add(
+    //         this.coreConfig.layout.skin + "-layout"
+    //       );
+    //     }
+    //     this.cdr.markForCheck();
+    //   });
 
     this._title.setTitle(this.coreConfig.app.appTitle);
   }
@@ -194,7 +191,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.complete();
   }
 
-  toggleSidebar(key): void {
-    this._coreSidebarService.getSidebarRegistry(key).toggleOpen();
-  }
+  // toggleSidebar(key): void {
+  //   this._coreSidebarService.getSidebarRegistry(key).toggleOpen();
+  // }
 }

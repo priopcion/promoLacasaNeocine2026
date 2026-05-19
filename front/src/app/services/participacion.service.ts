@@ -4,13 +4,12 @@ import { environment } from "environments/environment";
 
 const PARTICIPACION = environment.participacion;
 const GETPREMIO = environment.getPremio;
-const getPremioEroski2026 = environment.getPremioEroski2026;
-const GETDATOS = environment.getDatosUsuarioEroski2026 ;
+const getPremioNeocine2026 = environment.getPremioNeocine2026;
+const GETDATOS = environment.getDatosUsuarioNeocine2026 ;
 const VALIDACION = environment.validacion;
-const getProvinciasCocoRoom = environment.getProvinciasCocoRoom;
-const GETTIENDAS = environment.getTiendas;
-const GETENTRADA = environment.getEntradaEroski2026;
-const updateFechaDescargaEroski2026 = environment.updateFechaDescargaEroski2026;
+const getTiendasNeocine2026 = environment.getTiendasNeocine2026;
+const GETENTRADA = environment.getEntradaNeocine2026;
+const updateFechaDescargaNeocine2026 = environment.updateFechaDescargaNeocine2026;
 
 @Injectable({ providedIn: "root" })
 export class ParticipacionService {
@@ -24,31 +23,27 @@ export class ParticipacionService {
     return this.http.get(GETPREMIO + "/" + idPremio);
   }
 
-  getPremioEroski2026(idParticipante: any, idPremio: any) {
-    return this.http.get(getPremioEroski2026 + "/" + idParticipante + "/" + idPremio);
+  getPremioNeocine2026(idParticipante: any, idPremio: any) {
+    return this.http.get(getPremioNeocine2026 + "/" + idParticipante + "/" + idPremio);
   }
 
-  getDatosUsuarioEroski2026(idParticipante: any, email: any) {
+  getDatosUsuarioNeocine2026(idParticipante: any, email: any) {
     return this.http.get(GETDATOS + "/" + idParticipante + "/" + email);
   }
 
-  enviarDatosValidacionEroski2026(participante: any) {
+  enviarDatosValidacionNeocine2026(participante: any) {
     return this.http.post(VALIDACION, participante);
   }
   
-  getProvinciasCocoRoom() {
-    return this.http.get(getProvinciasCocoRoom);
+  getTiendasNeocine2026() {
+    return this.http.get(getTiendasNeocine2026);
   }
 
-  getTiendas() {
-    return this.http.get(GETTIENDAS);
-  }
-
-  getEntradaEroski2026(idParticipacion: any, codEntrada: any) {
+  getEntradaNeocine2026(idParticipacion: any, codEntrada: any) {
     return this.http.get(GETENTRADA + "/" + idParticipacion + "/" + codEntrada);
   }
 
-  updateFechaDescargaEroski2026(participacion: any) {
-    return this.http.post(updateFechaDescargaEroski2026, participacion);
+  updateFechaDescargaNeocine2026(participacion: any) {
+    return this.http.post(updateFechaDescargaNeocine2026, participacion);
   }
 }

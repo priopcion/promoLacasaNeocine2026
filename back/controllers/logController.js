@@ -80,7 +80,7 @@ async function insertLogDatosIncorrectos(req, res) {
   }
 }
 
-async function insertLogDatosParticipacionEroski(req, res) {
+async function insertLogDatosParticipacionNeocine(req, res) {
   try {
     let idParticipante = req.body.idParticipante;
     let tipoDispositivo = req.body.tipoDispositivo;
@@ -120,5 +120,5 @@ async function insertLogDatosParticipacionEroski(req, res) {
 module.exports = {
   insertLogRecordarContrasenya,
   insertLogDatosIncorrectos,
-  insertLogDatosParticipacionEroski
+  insertLogDatosParticipacionNeocine
 };
