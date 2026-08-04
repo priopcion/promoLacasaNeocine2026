@@ -8,10 +8,11 @@ export const environment = {
   participacion:
     "https://apipr2.priopcion.com/lacasapromos/participaciones/insertParticipacionNeocine2026",
   getTiendasNeocine2026: "https://apipr2.priopcion.com/lacasapromos/participaciones/getTiendasNeocine2026",
+  getProvinciasNeocine2026: "https://apipr2.priopcion.com/lacasapromos/participaciones/getProvinciasNeocine2026",
   getPremio: "https://apipr2.priopcion.com/lacasapromos/participaciones/premio",
   getPremioNeocine2026: "https://apipr2.priopcion.com/lacasapromos/participaciones/premioNeocine2026",
   getDatosUsuarioNeocine2026: "https://apipr2.priopcion.com/lacasapromos/participaciones/datosUsuario",
-  validacion: "https://apipr2.priopcion.com/lacasapromos/participaciones/datosValidacion",
+  enviarDatosValidacionNeocine2026: "https://apipr2.priopcion.com/lacasapromos/participaciones/enviarDatosValidacionNeocine2026",
   insertLogDatosParticipacionNeocine: "https://apipr2.priopcion.com/lacasapromos/log/insertLogDatosParticipacionNeocine",
   getEntradaNeocine2026: "https://apipr2.priopcion.com/lacasapromos/participaciones/getEntradaNeocine2026",
   updateFechaDescargaNeocine2026: "https://apipr2.priopcion.com/lacasapromos/participaciones/updateFechaDescargaNeocine2026",

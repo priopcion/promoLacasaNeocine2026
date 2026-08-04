@@ -11,3 +11,34 @@ input::placeholder{
 select{
   font-size: 1.5rem !important;
 }
+
+// Botones de foto del DNI: mismo alto y tipografía que los inputs del formulario
+.btnFotoDni {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 6vh;
+  min-height: 6vh;
+  padding: 0 0.5rem;
+  font-size: 1.5rem;
+  white-space: nowrap;
+}
+
+// Vistas previas del anverso y del reverso: misma caja para las dos
+.previewDni {
+  padding: 1rem 0;
+
+  img {
+    height: 12vh;
+    max-width: 90%;
+    object-fit: contain;
+  }
+}
+
+.textoErrorDni {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #e86464;
+}

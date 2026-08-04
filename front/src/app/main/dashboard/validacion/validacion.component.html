@@ -59,7 +59,7 @@
                             <div class="mb-3 text-center">
                                 <h2 class="segundoTitulo mb-2">
                                     Verifícanos tus datos para poder enviarte tu
-                                    <strong class="textoPremio">NINTENDO SWITCH</strong>
+                                    <strong class="textoPremio">PLAYSTATION 5</strong>
                                 </h2>
                                 <p class="mb-0" style="font-style: italic">Todos los campos con (*) son obligatorios.</p>
                             </div>
@@ -91,6 +91,46 @@
                                                     placeholder="* E-MAIL" id="inputEmail" />
                                             </div>
                                         </div>
+                                        <div class="row col-12 col-lg-10 mt-2">
+                                            <div class="form-group col-lg-4 col-12">
+                                                <input
+                                                    [class.is-invalid]="formDatosUsuario.get('Dni')?.invalid && formDatosUsuario.get('Dni')?.touched"
+                                                    formControlName="Dni" type="text" class="form-control inputDatos"
+                                                    placeholder="* DNI / NIE" id="inputDni" maxlength="9"
+                                                    style="text-transform: uppercase" />
+                                                <small class="textoErrorDni"
+                                                    *ngIf="formDatosUsuario.get('Dni')?.hasError('dni') && formDatosUsuario.get('Dni')?.touched">
+                                                    El DNI / NIE no es válido
+                                                </small>
+                                            </div>
+
+                                            <div class="form-group col-lg-4 col-12">
+                                                <input #inputDniAnverso type="file" accept="image/*"
+                                                    class="form-control inputDatos d-none"
+                                                    (change)="seleccionaFotoDni($event, 'anverso')" />
+                                                <button type="button" class="btnTicket btnFotoDni col-12 btn"
+                                                    (click)="abrirInputDni('anverso')">
+                                                    {{ dniAnversoAdjunto ? 'ANVERSO ✔' : '* ANVERSO DNI' }}
+                                                </button>
+                                                <div *ngIf="dniAnversoAdjunto" class="imagenPreview previewDni mt-2">
+                                                    <img [src]="sanitize(previewDniAnverso)" class="rounded" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-lg-4 col-12">
+                                                <input #inputDniReverso type="file" accept="image/*"
+                                                    class="form-control inputDatos d-none"
+                                                    (change)="seleccionaFotoDni($event, 'reverso')" />
+                                                <button type="button" class="btnTicket btnFotoDni col-12 btn"
+                                                    (click)="abrirInputDni('reverso')">
+                                                    {{ dniReversoAdjunto ? 'REVERSO ✔' : '* REVERSO DNI' }}
+                                                </button>
+                                                <div *ngIf="dniReversoAdjunto" class="imagenPreview previewDni mt-2">
+                                                    <img [src]="sanitize(previewDniReverso)" class="rounded" />
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <h2 class="segundoTitulo mt-2">
                                             Dirección de entrega
                                         </h2>
@@ -129,11 +169,11 @@
                                                     placeholder="* LOCALIDAD" id="inputPoblacion" />
                                             </div>
                                             <div class="form-group col-lg-5 col-12">
-                                                <select class="form-control inputDatos" formControlName="Tienda"
+                                                <select class="form-control inputDatos" formControlName="Provincia"
                                                     (change)="controlaModificacionProvincia()"
-                                                    [class.is-invalid]="formDatosUsuario.get('Tienda')?.invalid && formDatosUsuario.get('Tienda')?.touched">
-                                                    <option [ngValue]="''" disabled>* CINE</option>
-                                                    <option *ngFor="let prov of tiendas" [value]="prov">{{ prov }}</option>
+                                                    [class.is-invalid]="formDatosUsuario.get('Provincia')?.invalid && formDatosUsuario.get('Provincia')?.touched">
+                                                    <option value="" disabled>* PROVINCIA</option>
+                                                    <option *ngFor="let prov of provincias" [value]="prov.Nombre">{{ prov.Nombre }}</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-lg-2 col-12">

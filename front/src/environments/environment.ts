@@ -8,10 +8,11 @@ export const environment = {
   participacion:
     "http://localhost:8086/participaciones/insertParticipacionNeocine2026",
   getTiendasNeocine2026: "http://localhost:8086/participaciones/getTiendasNeocine2026",
+  getProvinciasNeocine2026: "http://localhost:8086/participaciones/getProvinciasNeocine2026",
   getPremio: "http://localhost:8086/participaciones/premio",
   getPremioNeocine2026: "http://localhost:8086/participaciones/premioNeocine2026",
   getDatosUsuarioNeocine2026 : "http://localhost:8086/participaciones/datosUsuario",
-  validacion: "http://localhost:8086/participaciones/datosValidacion",
+  enviarDatosValidacionNeocine2026: "http://localhost:8086/participaciones/enviarDatosValidacionNeocine2026",
   insertLogDatosParticipacionNeocine: "http://localhost:8086/log/insertLogDatosParticipacionNeocine",
   getEntradaNeocine2026: "http://localhost:8086/participaciones/getEntradaNeocine2026",
   updateFechaDescargaNeocine2026: "http://localhost:8086/participaciones/updateFechaDescargaNeocine2026",

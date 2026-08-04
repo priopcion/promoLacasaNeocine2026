@@ -4,6 +4,23 @@ const sharp = require("sharp");
 const crypto = require("crypto");
 const path = require("path");
 
+const LETRAS_DNI = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+function dniEsValido(dni) {
+  const valor = (dni || "").toString().toUpperCase().trim();
+
+  if (!/^[XYZ0-9][0-9]{7}[A-Z]$/.test(valor)) return false;
+
+  // NIE: X -> 0, Y -> 1, Z -> 2
+  const numero = valor
+    .substring(0, 8)
+    .replace(/^X/, "0")
+    .replace(/^Y/, "1")
+    .replace(/^Z/, "2");
+
+  return LETRAS_DNI.charAt(parseInt(numero, 10) % 23) === valor.charAt(8);
+}
+
 async function getImageHash(filePath) {
   return new Promise((resolve, reject) => {
     const hash = crypto.createHash("sha256");
@@ -196,24 +213,92 @@ async function enviarDatosValidacionNeocine2026(req, res) {
   let numeroVia = req.body.NumeroVia;
   let restoDireccion = req.body.RestoDireccion;
   let localidad = req.body.Localidad;
-  let tienda = req.body.Tienda;
+  let provincia = req.body.Provincia;
   let cp = req.body.CP;
+  let dni = (req.body.Dni || "").toString().toUpperCase().trim();
+
+  let idPromocion = 1055;
+  let fecha = new Date();
+  let rutasDest = [];
+
+  if (!dniEsValido(dni)) {
+    return res.status(400).json({ error: "DNI / NIE no válido" });
+  }
+
+  if (!req.files || !req.files.fileDniAnverso || !req.files.fileDniReverso) {
+    return res.status(400).json({ error: "No se han recibido las fotos del DNI" });
+  }
+
+  const t = await sequelize.transaction();
 
   try {
     await sequelize.query(
-      `sp_updateParticipanteLacasitos 
-        @nombre = :nombre, @telefono = :telefono, @email = :email, 
-        @tipoVia = :tipoVia, @nombreVia = :nombreVia, @numeroVia = :numeroVia, 
+      `sp_updateParticipanteLacasitos
+        @nombre = :nombre, @telefono = :telefono, @email = :email,
+        @tipoVia = :tipoVia, @nombreVia = :nombreVia, @numeroVia = :numeroVia,
         @restoDireccion = :restoDireccion, @localidad = :localidad,
-        @tienda = :tienda, @cp = :cp, @idParticipante = :idParticipante`,
+        @provincia = :provincia, @cp = :cp, @idParticipante = :idParticipante,
+        @dni = :dni`,
       {
-        replacements: { nombre, telefono, email, tipoVia, nombreVia, numeroVia, restoDireccion, localidad, tienda, cp, idParticipante },
+        replacements: { nombre, telefono, email, tipoVia, nombreVia, numeroVia, restoDireccion, localidad, provincia, cp, idParticipante, dni },
+        transaction: t,
       },
     );
+
+    // Fotos del DNI: mismo proceso que el ticket de compra en insertParticipacionNeocine2026
+    const carasDni = [
+      { cara: "anverso", fichero: req.files.fileDniAnverso },
+      { cara: "reverso", fichero: req.files.fileDniReverso },
+    ];
+
+    await fs.promises.mkdir("archivos", { recursive: true });
+
+    for (const { cara, fichero } of carasDni) {
+      const hash = await getImageHash(fichero.path);
+      const nombreFichero = `${fecha.getDate()}-${fecha.getMonth() + 1}-${fecha.getFullYear()}_${idParticipante}_dni_${cara}_${fichero.name}`;
+
+      await sequelize.query(
+        `sp_insertarGestorDocumentalMerkocash
+          @fichero = :fichero,
+          @idParticipante = :idParticipante,
+          @idPromocion = :idPromocion,
+          @hash = :hash`,
+        {
+          replacements: { fichero: nombreFichero, idParticipante, idPromocion, hash },
+          transaction: t,
+        },
+      );
+
+      const rutaDest = "archivos/" + nombreFichero;
+      await fs.promises.copyFile(fichero.path, rutaDest);
+      rutasDest.push(rutaDest);
+    }
+
+    await t.commit();
+
+    rutasDest.forEach((rutaDest) => {
+      sharp(rutaDest)
+        .resize(500, 500, { fit: "fill" })
+        .toFile("archivos/_rs" + path.basename(rutaDest))
+        .catch((err) => console.error("Error generando thumbnail:", err));
+    });
 
     res.status(200).json(idParticipante);
   } catch (error) {
     console.error(error);
+    await t.rollback();
+
+    rutasDest.forEach((rutaDest) => {
+      fs.unlink(rutaDest, (err) => {
+        if (err && err.code !== "ENOENT")
+          console.error("Error borrando fichero huérfano:", err);
+      });
+      fs.unlink("archivos/_rs" + path.basename(rutaDest), (err) => {
+        if (err && err.code !== "ENOENT")
+          console.error("Error borrando thumbnail huérfano:", err);
+      });
+    });
+
     res.status(401).json("no valido");
   }
 }
@@ -229,10 +314,23 @@ async function getTiendasNeocine2026(req, res) {
   }
 }
 
+async function getProvinciasNeocine2026(req, res) {
+  try {
+    const provincias = await sequelize.query(
+      `SELECT Id, Nombre FROM Provincias ORDER BY Nombre ASC`,
+    );
+    res.status(200).json(provincias[0]);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json("error");
+  }
+}
+
 module.exports = {
   insertParticipacionNeocine2026,
   getPremioNeocine2026,
   getTiendasNeocine2026,
+  getProvinciasNeocine2026,
   getDatosUsuarioNeocine2026,
   enviarDatosValidacionNeocine2026,
 };

@@ -33,19 +33,19 @@ const routes = [
     data: { animation: "danalytics" },
   },
 
-  {
-    path: "formulario",
-    component: LandingFormularioComponent,
-    data: { animation: "danalytics" },
-  },
-  {
-    path: "ganador",
-    component: LandingGanadorComponent,
-  },
-  {
-    path: "noGanador",
-    component: LandingNoganadorComponent,
-  },
+  // {
+  //   path: "formulario",
+  //   component: LandingFormularioComponent,
+  //   data: { animation: "danalytics" },
+  // },
+  // {
+  //   path: "ganador",
+  //   component: LandingGanadorComponent,
+  // },
+  // {
+  //   path: "noGanador",
+  //   component: LandingNoganadorComponent,
+  // },
     {
     path: "validacion",
     component: ValidacionComponent

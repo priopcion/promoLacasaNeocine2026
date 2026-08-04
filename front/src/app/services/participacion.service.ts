@@ -6,8 +6,9 @@ const PARTICIPACION = environment.participacion;
 const GETPREMIO = environment.getPremio;
 const getPremioNeocine2026 = environment.getPremioNeocine2026;
 const GETDATOS = environment.getDatosUsuarioNeocine2026 ;
-const VALIDACION = environment.validacion;
+const VALIDACION = environment.enviarDatosValidacionNeocine2026;
 const getTiendasNeocine2026 = environment.getTiendasNeocine2026;
+const getProvinciasNeocine2026 = environment.getProvinciasNeocine2026;
 const GETENTRADA = environment.getEntradaNeocine2026;
 const updateFechaDescargaNeocine2026 = environment.updateFechaDescargaNeocine2026;
 
@@ -37,6 +38,10 @@ export class ParticipacionService {
   
   getTiendasNeocine2026() {
     return this.http.get(getTiendasNeocine2026);
+  }
+
+  getProvinciasNeocine2026() {
+    return this.http.get(getProvinciasNeocine2026);
   }
 
   getEntradaNeocine2026(idParticipacion: any, codEntrada: any) {
